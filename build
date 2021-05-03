@@ -34,8 +34,8 @@ up(){
 }
 
 tg(){
-	bot_api=1620999158:AAGzv12jXVIu1MtZB6ttPmBW74BcaG4oLbQ # Your tg bot api, dont use my one haha, it's better to encrypt bot api too.
-	your_telegram_id=$1 # No need to touch 
+	bot_api=1718571096:AAExSACGMqzU-hXqMqIyMsqBuoucP_U8Tis # Your tg bot api, dont use my one haha, it's better to encrypt bot api too.
+	your_telegram_id=$1 # No need to touch
 	msg=$2 # No need to touch
 	curl -s "https://api.telegram.org/bot${bot_api}/sendmessage" --data "text=$msg&chat_id=${your_telegram_id}"
 }
