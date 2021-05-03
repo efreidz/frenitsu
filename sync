@@ -4,15 +4,16 @@ mkdir -p /tmp/rom # Where to sync source
 cd /tmp/rom
 
 # Repo init command, that -device,-mips,-darwin,-notdefault part will save you more time and storage to sync, add more according to your rom and choice. Optimization is welcomed! Let's make it quit, and with depth=1 so that no unnecessary things.
-repo init --depth=1 -u https://github.com/PixelPlusUI-Elle/manifest -b eleven -g default,-device,-mips,-darwin,-notdefault
+repo init -q --no-repo-verify --depth=1 -u git://github.com/ColtOSTemp/platform_manifest.git -b c11 -g default,-device,-mips,-darwin,-notdefault
 
 # Clone local manifest! So that no need to manually git clone repos or change hals, you can use normal git clone or rm and re clone, they will cost little more time, and you may get timeout! Let's make it quit and depth=1 too.
 #git clone https://github.com/Apon77Lab/android_.repo_local_manifests.git --depth 1 -b aex .repo/local_manifests
 
 # Sync source with -q, no need unnecessary messages, you can remove -q if want! try with -j30 first, if fails, it will try again with -j8
 #repo sync -c --no-clone-bundle --no-tags --optimized-fetch --prune --force-sync -j 30 || 
-repo sync -c -f --no-clone-bundle --no-tags --optimized-fetch --prune --force-sync -j 8 
+repo sync --no-tags --no-clone-bundle --force-sync -c
 
-git clone https://github.com/garisku05/device_ugglite -b r device/xiaomi/ugglite
-git clone https://github.com/garisku05/device_ugglite -b 11-vendor vendor/xiaomi/ugglite
-git clone https://github.com/mi-msm8937/android_kernel_xiaomi_msm8937-4.9 --depth=1 kernel/xiaomi/ugglite
+git clone https://github.com/efreidz/DT_ulysse -b 11 device/xiaomi/ulysse
+git clone https://github.com/ancient-devices/vendor_xiaomi_ulysse -b 11-common vendor/xiaomi/ulysse
+git clone https://github.com/efreidz/DTC_ulysse -b 11-ancient common/xiaomi/ulysse
+git clone https://github.com/adislice/android_kernel_xiaomi_ulysse-4.9.git --depth=1 -b 10 kernel/xiaomi/ulysse
